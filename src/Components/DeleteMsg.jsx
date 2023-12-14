@@ -1,11 +1,11 @@
-// "use client";
+"use-client";
 import { useRouter } from "next/navigation";
 import { API_URL } from "@/lib/API_URL";
 
-export default function DeleteMessage({ message }) {
+export default function DeleteMessage({ post }) {
   const router = useRouter();
   async function handleDelete() {
-    const response = await fetch(`${API_URL}/api/posts/${message.id}`, {
+    const response = await fetch(`/api/posts/${post.id}`, {
       method: "DELETE",
     });
     router.refresh();

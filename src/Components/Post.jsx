@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { API_URL } from "@/lib/API_URL";
 
 export default function PostMessage() {
-  const [newPost, setNewPost] = useState("");
+  const [post, setPost] = useState("");
   const [error, setError] = useState("");
 
   const router = useRouter();
@@ -27,7 +27,7 @@ export default function PostMessage() {
     if (!info.success) {
       setError(info.error);
     } else {
-      setNewPost("");
+      setPost("");
       setError("");
       router.refresh();
     }
@@ -39,8 +39,8 @@ export default function PostMessage() {
         <textarea
           id="post-text"
           placeholder="I want the world to know.."
-          value={newPost}
-          onChange={(e) => setNewPost(e.target.value)}
+          value={post}
+          onChange={(e) => setPost(e.target.value)}
         />
         {error}
         <button id="post-button" type="submit">

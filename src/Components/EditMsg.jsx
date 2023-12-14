@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { API_URL } from "@/lib/API_URL";
 
-export default function EditMessage({ message, setIsEdit }) {
-  const [text, setText] = useState(message.text);
+export default function EditMessage({ post, setIsEdit }) {
+  const [text, setText] = useState(post.text);
   const router = useRouter();
 
   async function handleEdit(e) {
@@ -11,7 +11,7 @@ export default function EditMessage({ message, setIsEdit }) {
     if (!text) {
       alert("Please enter/edit a message");
     } else {
-      const response = await fetch(`${API_URL}/api/posts/${message.id}`, {
+      const response = await fetch(`/api/posts/${post.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

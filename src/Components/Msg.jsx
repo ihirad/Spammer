@@ -1,6 +1,4 @@
 "use client";
-import { useRouter } from "next/navigation";
-import { API_URL } from "@/lib/API_URL";
 import { useState } from "react";
 import EditMessage from "./EditMsg";
 import LikeMessage from "./LikeMsg";
@@ -8,26 +6,23 @@ import DeleteMessage from "./DeleteMsg";
 import AddComment from "./AddComment";
 import Comments from "./Comments";
 
-export default function Message({ messages }) {
+export default function Message({ posts }) {
   const [isEdit, setIsEdit] = useState(false);
   const [isComment, setIsComment] = useState(false);
+  const [counter, setCounter] = useState(0);
 
   return (
     <div>
-      {messages.map((message) => {
+      {posts.map((post) => {
         return (
-          <div key={message.id}>
+          <div key={post.id}>
             {isEdit ? (
-              <EditMessage
-                message={message}
-                key={message.id}
-                setIsEdit={setIsEdit}
-              />
+              <EditMessage post={post} key={post.id} setIsEdit={setIsEdit} />
             ) : (
-              <div>{message.text}</div>
+              <div>{post.text}</div>
             )}
             <div className="btn-container">
-              <LikeMessage message={message} />
+              <LikeMessage post={post} />
               <button
                 className="reaction-button"
                 onClick={(e) => {
@@ -36,7 +31,7 @@ export default function Message({ messages }) {
               >
                 💬
               </button>
-              <DeleteMessage message={message} />
+              <DeleteMessage post={post} />
               <button
                 className="reaction-button"
                 onClick={(e) => {
@@ -51,10 +46,11 @@ export default function Message({ messages }) {
               <AddComment
                 setIsComment={setIsComment}
                 isComment={isComment}
-                message={message}
+                post={post}
+                setCounter={setCounter}
               />
             ) : null}
-            <Comments message={message} />
+            <Comments post={post} counter={counter} />
           </div>
         );
       })}
