@@ -32,21 +32,23 @@ export default function EditMessage({ post, setIsEdit }) {
   }
   return (
     <div>
-      <form>
-        <input
-          type="text"
-          onChange={(e) => setText(e.target.value)}
-          value={text}
-        />
-        <div>
-          <button onClick={handleEdit} type="submit">
-            Submit
-          </button>
-          <button onClick={handleCancel} type="button">
-            Cancel
-          </button>
-        </div>
-      </form>
+      <div>
+        <form>
+          <input
+            type="text"
+            onChange={(e) => setText(e.target.value)}
+            value={text}
+          />
+          <div>
+            <button onClick={handleEdit} type="submit">
+              Submit
+            </button>
+            <button onClick={handleCancel} type="button">
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

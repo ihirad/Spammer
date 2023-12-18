@@ -15,7 +15,7 @@ export default async function Messages() {
   });
 
   return (
-    <div>
+    <div id="message-container">
       {posts.map((post) => {
         return <Comments key={post.id} post={post} />;
       })}

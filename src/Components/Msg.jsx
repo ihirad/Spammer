@@ -12,7 +12,7 @@ export default function Message({ post }) {
 
   return (
     <div>
-      <div> {post.text}</div>
+      <div id="message-style"> {post.text}</div>
       <div key={post.id} className="btn-container">
         {isEdit ? (
           <EditMessage post={post} key={post.id} setIsEdit={setIsEdit} />
