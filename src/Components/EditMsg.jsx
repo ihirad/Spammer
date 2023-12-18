@@ -1,6 +1,6 @@
+"use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { API_URL } from "@/lib/API_URL";
 
 export default function EditMessage({ post, setIsEdit }) {
   const [text, setText] = useState(post.text);
@@ -32,14 +32,14 @@ export default function EditMessage({ post, setIsEdit }) {
   }
   return (
     <div>
-      <form onSubmit={handleEdit}>
+      <form>
         <input
           type="text"
           onChange={(e) => setText(e.target.value)}
           value={text}
         />
         <div>
-          <button onClick={handleEdit} type="button">
+          <button onClick={handleEdit} type="submit">
             Submit
           </button>
           <button onClick={handleCancel} type="button">

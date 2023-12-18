@@ -33,20 +33,15 @@ export async function DELETE(request, response) {
   try {
     const { postId } = response.params;
 
-    //extract text from body
-    const { text } = await request.json();
-    const post = await prisma.post.findFirst({ where: { id: postId } });
-
-    if (!text)
+    const deletePost = await prisma.post.delete({
+      where: { id: postId },
+    });
+    if (!deletePost) {
       return NextResponse.json({
         success: false,
         error: "No post with that id found",
       });
-
-    const deletePost = await prisma.post.delete({
-      where: { id: postId },
-    });
-
+    }
     return NextResponse.json({
       success: true,
       post: deletePost,

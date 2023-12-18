@@ -6,19 +6,18 @@ import { API_URL } from "@/lib/API_URL";
 export default function PostMessage() {
   const [post, setPost] = useState("");
   const [error, setError] = useState("");
-
   const router = useRouter();
 
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const response = await fetch(`${API_URL}/api/posts`, {
+    const response = await fetch(`/api/posts`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        text: newPost,
+        text: post,
       }),
     });
 

@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 import { useRouter } from "next/navigation";
 import { API_URL } from "@/lib/API_URL";
 

@@ -1,6 +1,5 @@
-import { API_URL } from "@/lib/API_URL";
-import Message from "./Msg";
 import { prisma } from "@/lib/prisma.js";
+import Comments from "./Comments";
 
 export default async function Messages() {
   // const response = await fetch(`${API_URL}/api/posts`, {
@@ -17,7 +16,9 @@ export default async function Messages() {
 
   return (
     <div>
-      <Message posts={posts} />
+      {posts.map((post) => {
+        return <Comments key={post.id} post={post} />;
+      })}
     </div>
   );
 }

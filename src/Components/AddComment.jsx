@@ -47,9 +47,7 @@ export default function AddComment({
             onChange={(e) => setText(e.target.value)}
           />
           <div>
-            <button onClick={handleComment} type="button">
-              Comment
-            </button>
+            <button type="submit">Comment</button>
             <button onClick={handleCancel} type="button">
               Cancel
             </button>
