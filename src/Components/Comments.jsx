@@ -17,7 +17,7 @@ export default async function Comments({ post }) {
             {comments.map((comment) => {
               return (
                 <div key={comment.id} id="comment-container">
-                  <p>{comment.text}</p>
+                  <p className="comment-style">{comment.text}</p>
                 </div>
               );
             })}
